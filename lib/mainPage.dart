@@ -5,7 +5,7 @@ import 'minePage.dart';
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
         debugShowCheckedModeBanner: false, home: new MainPageWidget());
   }
 }
@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
 class MainPageWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new MainPageState();
+    return MainPageState();
   }
 }
 
@@ -41,11 +41,11 @@ class MainPageState extends State<MainPageWidget> {
    */
   Text getTabTitle(int curIndex) {
     if (curIndex == _tabIndex) {
-      return new Text(appBarTitles[curIndex],
-          style: new TextStyle(fontSize: 14.0, color: const Color(0xff1296db)));
+      return Text(appBarTitles[curIndex],
+          style: TextStyle(fontSize: 14.0, color: const Color(0xff1296db)));
     } else {
       return new Text(appBarTitles[curIndex],
-          style: new TextStyle(fontSize: 14.0, color: const Color(0xff515151)));
+          style: TextStyle(fontSize: 14.0, color: const Color(0xff515151)));
     }
   }
 
@@ -53,7 +53,7 @@ class MainPageState extends State<MainPageWidget> {
    * 根据image路径获取图片
    */
   Image getTabImage(path) {
-    return new Image.asset(path, width: 24.0, height: 24.0);
+    return Image.asset(path, width: 24.0, height: 24.0);
   }
 
   void initData() {
@@ -61,15 +61,21 @@ class MainPageState extends State<MainPageWidget> {
      * 初始化选中和未选中的icon
      */
     tabImages = [
-      [getTabImage('images/home_normal.png'), getTabImage('images/home_selected.png')],
-      [getTabImage('images/my_normal.png'), getTabImage('images/my_selected.png')],
+      [
+        getTabImage('images/home_normal.png'),
+        getTabImage('images/home_selected.png')
+      ],
+      [
+        getTabImage('images/my_normal.png'),
+        getTabImage('images/my_selected.png')
+      ],
     ];
     /*
      * 2个子界面
      */
     _pageList = [
-      new HomePage(),
-      new MinePage(),
+      HomePage(),
+      MinePage(),
     ];
   }
 
@@ -79,12 +85,10 @@ class MainPageState extends State<MainPageWidget> {
     initData();
     return Scaffold(
         body: _pageList[_tabIndex],
-        bottomNavigationBar: new BottomNavigationBar(
+        bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
-            new BottomNavigationBarItem(
-                icon: getTabIcon(0), title: getTabTitle(0)),
-            new BottomNavigationBarItem(
-                icon: getTabIcon(1), title: getTabTitle(1)),
+            BottomNavigationBarItem(icon: getTabIcon(0), title: getTabTitle(0)),
+            BottomNavigationBarItem(icon: getTabIcon(1), title: getTabTitle(1)),
           ],
           type: BottomNavigationBarType.fixed,
           //默认选中首页
